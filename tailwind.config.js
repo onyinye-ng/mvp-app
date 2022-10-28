@@ -30,6 +30,9 @@ module.exports = {
     },
     extend: {
       translate: ["last"],
+      backgroundImage: {
+        "business-store": "url('/src/assets/business-store.jpg')",
+      },
     },
   },
 }
