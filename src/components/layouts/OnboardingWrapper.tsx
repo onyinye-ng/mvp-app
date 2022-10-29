@@ -31,7 +31,6 @@ type props = {
 
 export const OnboardingWrapper: React.FC<props> = ({ children }) => {
   return (
-    // bg-gradient-to-t from-primary-dark
     <div className="h-screen bg-blend-multiply bg-business-store bg-no-repeat bg-center bg-cover bg-primary flex justify-center items-center">
       <div className="h-full w-full py-10 flex flex-col justify-between items-center">
         <StatusBar />
