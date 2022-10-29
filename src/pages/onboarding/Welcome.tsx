@@ -1,7 +1,21 @@
-import React from "react"
+import React, { FormEvent } from "react"
 import { Button, Input, Label, OnboardingWrapper } from "../../components"
+import { useForm, useMailChimpStore, useStatusStore } from "../../stores"
 
 export const Welcome: React.FC<{}> = () => {
+  const { setCredential, credentials } = useForm()
+  const { loading } = useStatusStore()
+  const { subscribeMemberToList } = useMailChimpStore()
+
+  const handleSubscription = async (e: FormEvent) => {
+    e.preventDefault()
+    loading(true, "Submitting...")
+
+    await subscribeMemberToList(credentials.email!).then((resp) => {
+      console.log(resp)
+    })
+  }
+
   return (
     <OnboardingWrapper>
       <div className="h-5/6 flex justify-center items-center">
@@ -16,7 +30,10 @@ export const Welcome: React.FC<{}> = () => {
             product announcements from Onyinye. You can unsubscribe at any time.
           </div>
 
-          <form className="flex flex-col justify-center lg:gap-2 gap-3 mt-6 lg:w-4/6 w-full lg:p-10 p-4 bg-white rounded-md">
+          <form
+            onSubmit={handleSubscription}
+            className="flex flex-col justify-center lg:gap-2 gap-3 mt-6 lg:w-4/6 w-full lg:p-10 p-4 bg-white rounded-md"
+          >
             <Label
               htmlFor="email"
               className="text-grey-dark"
@@ -25,6 +42,9 @@ export const Welcome: React.FC<{}> = () => {
             </Label>
             <Input
               id="email"
+              type="email"
+              required
+              onChange={(e) => setCredential("email", e.target.value)}
               className="w-full py-3 px-4 shadow-md border-grey"
               placeholder="you@company.com"
             />
@@ -32,6 +52,7 @@ export const Welcome: React.FC<{}> = () => {
             <div className="flex flex-col">
               <Button
                 title="notify-me"
+                type="submit"
                 className="bg-primary text-primary-light mt-2"
               >
                 Notify me!
