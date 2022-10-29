@@ -13,6 +13,7 @@ export const Welcome: React.FC<{}> = () => {
 
     await subscribeMemberToList(credentials.email!).then((resp) => {
       console.log(resp)
+      loading(false)
     })
   }
 
