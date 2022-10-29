@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useStatusStore } from "../../stores"
+import { LoadingIndicator } from "../layouts/StatusBar"
 
 /**
  * An optimized button.
@@ -16,8 +17,14 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
       aria-label={props.title}
       {...props}
       disabled={(props.type === "submit" && isLoading) || props.disabled}
-      className={`p-3 px-6 text-center rounded-md focus:outline-none focus:shadow-none hover:opacity-95 active:opacity-95 disabled:bg-grey-light ${props.className}`}
-    />
+      className={`p-3 px-6 text-center rounded-md focus:outline-none focus:shadow-none hover:opacity-95 active:opacity-95 disabled:bg-opacity-95 ${props.className}`}
+    >
+      {props.type === "submit" && isLoading ? (
+        <LoadingIndicator borderColor="text-grey-light" />
+      ) : (
+        props.children
+      )}
+    </button>
   )
 }
 
