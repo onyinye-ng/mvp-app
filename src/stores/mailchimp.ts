@@ -16,9 +16,9 @@ export const useMailChimpStore = create<MailChimpState & MailChimpMethods>()(
       (set, get) => ({
         restoreDefault: () => {},
         subscribeMemberToList: async (email) => {
-          const listId = "41a652d840"
-          const apiKey = "6d7301866a9e5af14a469ede99041d73-us14"
-          const serverPrefix = "us14"
+          const listId = process.env.REACT_APP_LIST_ID!
+          const apiKey = process.env.REACT_APP_MAILCHIMP_APIKEY!
+          const serverPrefix = process.env.REACT_APP_SERVER_PREFIX!
 
           client.setConfig({
             apiKey: apiKey,
