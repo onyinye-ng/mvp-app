@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect } from "react"
 import { Button, Input, Label, OnboardingWrapper } from "../../components"
 import { useForm, useStatusStore } from "../../stores"
 import MailchimpSubscribe from "react-mailchimp-subscribe"
-import { clearInput, once } from "../../utils"
+import { clearInput, throttle } from "../../utils"
 
 type props = {
   status: "success" | "error" | "sending" | null
@@ -16,7 +16,7 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
   const validateEmail = () => credentials.email?.indexOf("@") > -1
 
   useEffect(() => {
-    return once(() => {
+    return throttle(() => {
       setCredentials({
         email: "",
       })
