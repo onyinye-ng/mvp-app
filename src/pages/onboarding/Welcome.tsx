@@ -1,22 +1,90 @@
-import React, { FormEvent } from "react"
+import React, { FormEvent, useEffect } from "react"
 import { Button, Input, Label, OnboardingWrapper } from "../../components"
-import { useForm, useMailChimpStore, useStatusStore } from "../../stores"
+import { useForm, useStatusStore } from "../../stores"
+import MailchimpSubscribe from "react-mailchimp-subscribe"
+import { clearInput, once } from "../../utils"
 
-export const Welcome: React.FC<{}> = () => {
-  const { setCredential, credentials } = useForm()
-  const { loading } = useStatusStore()
-  const { subscribeMemberToList } = useMailChimpStore()
+type props = {
+  status: "success" | "error" | "sending" | null
+  message: string | Error | null
+  onValidated: Function
+}
 
-  const handleSubscription = async (e: FormEvent) => {
+const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
+  const { setCredential, setCredentials, setError, credentials } = useForm()
+  const { loading, toast } = useStatusStore()
+  const validateEmail = () => credentials.email?.indexOf("@") > -1
+
+  useEffect(() => {
+    return once(() => {
+      setCredentials({
+        email: "",
+      })
+    })
+  }, [setCredentials])
+
+  useEffect(() => {
+    if (status === "error") {
+      loading(false)
+      setError("email", message)
+      toast.error(String(message))
+    }
+  }, [loading, message, setError, status, toast])
+
+  useEffect(() => {
+    if (status === "success") {
+      loading(false)
+      clearInput("email")
+      toast.success(String(message))
+    }
+  }, [loading, message, setCredential, status, toast])
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     loading(true, "Submitting...")
 
-    await subscribeMemberToList(credentials.email!).then((resp) => {
-      console.log(resp)
-      loading(false)
-    })
+    validateEmail() === true && onValidated({ EMAIL: credentials.email! })
   }
 
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center lg:gap-2 gap-3 mt-6 lg:w-4/6 w-full lg:p-10 p-4 bg-white rounded-md"
+    >
+      <Label
+        htmlFor="email"
+        className="text-grey-dark"
+      >
+        Enter email address
+      </Label>
+      <Input
+        id="email"
+        type="email"
+        required
+        defaultValue={credentials.email!}
+        onChange={(e) => setCredential("email", e.target.value)}
+        className="w-full py-3 px-4 shadow-md border-grey"
+        autoCapitalize="off"
+        autoCorrect="off"
+        placeholder="you@company.com"
+      />
+
+      <div className="flex flex-col">
+        <Button
+          title="notify-me"
+          type="submit"
+          disabled={!validateEmail()}
+          className="bg-primary text-primary-light mt-2"
+        >
+          Notify me!
+        </Button>
+        <span className="text-grey text-sm mt-1">You can unsubscribe at any time.</span>
+      </div>
+    </form>
+  )
+}
+
+export const Welcome: React.FC<{}> = () => {
   return (
     <OnboardingWrapper>
       <div className="h-5/6 flex justify-center items-center">
@@ -31,36 +99,18 @@ export const Welcome: React.FC<{}> = () => {
             product announcements from Onyinye. You can unsubscribe at any time.
           </div>
 
-          <form
-            onSubmit={handleSubscription}
-            className="flex flex-col justify-center lg:gap-2 gap-3 mt-6 lg:w-4/6 w-full lg:p-10 p-4 bg-white rounded-md"
-          >
-            <Label
-              htmlFor="email"
-              className="text-grey-dark"
-            >
-              Enter email address
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              required
-              onChange={(e) => setCredential("email", e.target.value)}
-              className="w-full py-3 px-4 shadow-md border-grey"
-              placeholder="you@company.com"
-            />
-
-            <div className="flex flex-col">
-              <Button
-                title="notify-me"
-                type="submit"
-                className="bg-primary text-primary-light mt-2"
-              >
-                Notify me!
-              </Button>
-              <span className="text-grey text-sm mt-1">You can unsubscribe at any time.</span>
-            </div>
-          </form>
+          <MailchimpSubscribe
+            url={`https://onyinye.us14.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_LIST_ID}`}
+            render={({ subscribe, status, message }) => (
+              <CustomForm
+                status={status}
+                message={message}
+                onValidated={async (formData: any) => {
+                  subscribe(formData)
+                }}
+              />
+            )}
+          />
         </div>
       </div>
     </OnboardingWrapper>
