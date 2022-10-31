@@ -53,7 +53,7 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
     >
       <Label
         htmlFor="email"
-        className="text-grey-dark"
+        className="text-neutral600"
       >
         Enter email address
       </Label>
@@ -63,7 +63,7 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
         required
         defaultValue={credentials.email!}
         onChange={(e) => setCredential("email", e.target.value)}
-        className="w-full py-3 px-4 shadow-md border-grey"
+        className="w-full py-3 px-4 shadow-md border-neutral500"
         autoCapitalize="off"
         autoCorrect="off"
         placeholder="you@company.com"
@@ -74,11 +74,11 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
           title="notify-me"
           type="submit"
           disabled={!validateEmail()}
-          className="bg-primary text-primary-light mt-2"
+          className="bg-primary text-primary50 mt-2"
         >
           Notify me!
         </Button>
-        <span className="text-grey text-sm mt-1">You can unsubscribe at any time.</span>
+        <span className="text-neutral500 text-sm mt-1">You can unsubscribe at any time.</span>
       </div>
     </form>
   )
@@ -89,11 +89,11 @@ export const Welcome: React.FC<{}> = () => {
     <OnboardingWrapper>
       <div className="h-5/6 flex justify-center items-center">
         <div className="flex flex-col justify-center items-center lg:w-5/12 md:w-7/12 w-11/12 mx-auto gap-4 lg:gap-4">
-          <h1 className="lg:text-5xl text-4xl font-medium text-center text-primary-light">
+          <h1 className="lg:text-5xl text-4xl font-medium text-center text-primary50">
             Be the first to know when Onyinye Gift Cards launches!
           </h1>
 
-          <div className="text-opacity-90 text-center text-primary-light">
+          <div className="text-opacity-90 text-center text-primary50">
             Onyinye is still under construction - enter your details below to find out as soon as
             we're live! You'll also be added to our email list and will receive regular updates and
             product announcements from Onyinye. You can unsubscribe at any time.

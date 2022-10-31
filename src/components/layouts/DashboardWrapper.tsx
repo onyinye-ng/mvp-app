@@ -26,7 +26,7 @@ export {}
 
 //   return (
 //     <div
-//       className={`h-[10%] bg-primary-light md:shadow-none ${
+//       className={`h-[10%] bg-primary50 md:shadow-none ${
 //         navOpen === true ? "" : "z-10 sm:shadow-sm sm:sticky top-0"
 //       } flex items-center justify-between py-6 px-3 container mx-auto`}
 //     >
@@ -40,7 +40,7 @@ export {}
 
 //       <IconButton
 //         title="toggle-menu"
-//         className="block md:hidden hover:bg-grey-light hover:bg-opacity-50"
+//         className="block md:hidden hover:bg-neutral100 hover:bg-opacity-50"
 //         onClick={() => setNavOpen(true)}
 //       >
 //         <Bars3Icon className="w-8 h-8" />
@@ -49,14 +49,14 @@ export {}
 //       <div
 //         className={`${
 //           navOpen === true
-//             ? "show absolute top-0 bottom-0 left-0 right-0 flex flex-col justify-start gap-10 pt-40 p-20 md:hidden bg-primary-light z-10"
+//             ? "show absolute top-0 bottom-0 left-0 right-0 flex flex-col justify-start gap-10 pt-40 p-20 md:hidden bg-primary50 z-10"
 //             : "hidden md:flex md:flex-row md:gap-10"
 //         }`}
 //       >
 //         {navOpen && (
 //           <IconButton
 //             title="toggle-menu"
-//             className="block absolute top-6 right-6 md:hidden w-fit hover:bg-grey-light hover:bg-opacity-50"
+//             className="block absolute top-6 right-6 md:hidden w-fit hover:bg-neutral100 hover:bg-opacity-50"
 //             onClick={() => setNavOpen(false)}
 //           >
 //             <XMarkIcon className="w-8 h-8" />
@@ -102,7 +102,7 @@ export {}
 //             handleLogout()
 //             navOpen === true && setNavOpen(false)
 //           }}
-//           className={`border-transparent text-start focus:no-underline active:no-underline text-danger hover:border-danger border-b-4 rounded-sm p-2`}
+//           className={`border-transparent text-start focus:no-underline active:no-underline text-error500 hover:border-error500 border-b-4 rounded-sm p-2`}
 //         >
 //           Log Out
 //         </TextButton>
@@ -138,7 +138,7 @@ export {}
 //   }, [authenticated, navigate, toast])
 
 //   return (
-//     <div className="h-screen bg-primary-light text-grey-dark overflow-auto">
+//     <div className="h-screen bg-primary50 text-neutral600 overflow-auto">
 //       <div className="container mx-auto h-full">
 //         <StatusBar />
 //         <Header />

@@ -20,10 +20,10 @@ export const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement> & Input
         type={props.type ?? "text"}
         {...props}
         disabled={isLoading}
-        className={`rounded-md w-full py-2 px-3 placeholder:text-grey text-grey-dark focus:outline-double focus:outline-grey-light ${props.className}`}
+        className={`rounded-md w-full py-2 px-3 placeholder:text-neutral500 text-neutral600 focus:outline-double focus:outline-neutral100 ${props.className}`}
       />
       {props.errors && props.errors.length > 0 && (
-        <div className="text-danger font-medium text-xs mt-1">
+        <div className="text-error500 font-medium text-xs mt-1">
           {props.errors.map((error, index) => (
             <li key={index}>{error}</li>
           ))}
@@ -51,18 +51,18 @@ export const PrefixInput: React.FC<
   return (
     <div>
       <div
-        className={`rounded-sm w-full py-2 px-3 bg-white placeholder:text-grey text-grey-dark focus:outline-double focus:outline-grey-light flex justify-between ${props.className}`}
+        className={`rounded-sm w-full py-2 px-3 bg-white placeholder:text-neutral500 text-neutral600 focus:outline-double focus:outline-neutral100 flex justify-between ${props.className}`}
       >
         <div className="">{props.affix}</div>
         <input
           type={props.type ?? "text"}
           {...props}
           disabled={isLoading}
-          className={`w-full pl-3 border-none placeholder:text-grey text-grey-dark focus:outline-double focus:outline-grey-light ${props.className}`}
+          className={`w-full pl-3 border-none placeholder:text-neutral500 text-neutral600 focus:outline-double focus:outline-neutral100 ${props.className}`}
         />
       </div>
       {props.errors && props.errors.length > 0 && (
-        <div className="text-danger font-medium text-xs mt-1">
+        <div className="text-error500 font-medium text-xs mt-1">
           {props.errors.map((error, index) => (
             <li key={index}>{error}</li>
           ))}
@@ -88,10 +88,10 @@ export const TextareaInput: React.FC<
         rows={2}
         {...props}
         disabled={isLoading}
-        className={`rounded-sm w-full py-2 px-3 placeholder:text-grey text-grey-dark focus:outline-double focus:outline-grey-light ${props.className}`}
+        className={`rounded-sm w-full py-2 px-3 placeholder:text-neutral500 text-neutral600 focus:outline-double focus:outline-neutral100 ${props.className}`}
       />
       {props.errors && props.errors.length > 0 && (
-        <div className="text-danger font-medium text-xs mt-1">
+        <div className="text-error500 font-medium text-xs mt-1">
           {props.errors.map((error, index) => (
             <li key={index}>{error}</li>
           ))}
@@ -117,10 +117,10 @@ export const CheckboxInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>
         {...props}
         disabled={isLoading}
         type={props.type ?? "checkbox"}
-        className={`p-2 border-primary-dark text-primary-dark checked:bg-primary checked:text-primary-light focus:outline-double focus:outline-grey-light hover:opacity-95 ${props.className}`}
+        className={`p-2 border-primary600 text-primary600 checked:bg-primary checked:text-primary50 focus:outline-double focus:outline-neutral100 hover:opacity-95 ${props.className}`}
       />
       {props.errors && props.errors.length > 0 && (
-        <div className="text-danger font-medium text-xs mt-1">
+        <div className="text-error500 font-medium text-xs mt-1">
           {props.errors.map((error, index) => (
             <li key={index}>{error}</li>
           ))}
