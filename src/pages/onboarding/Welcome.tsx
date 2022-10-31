@@ -1,8 +1,8 @@
 import React, { FormEvent, useEffect } from "react"
-import { Button, Input, Label, OnboardingWrapper } from "../../components"
+import { Button, H1, Input, Label, OnboardingWrapper } from "../../components"
 import { useForm, useStatusStore } from "../../stores"
 import MailchimpSubscribe from "react-mailchimp-subscribe"
-import { clearInput, once } from "../../utils"
+import { clearInput, throttle } from "../../utils"
 
 type props = {
   status: "success" | "error" | "sending" | null
@@ -16,7 +16,7 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
   const validateEmail = () => credentials.email?.indexOf("@") > -1
 
   useEffect(() => {
-    return once(() => {
+    return throttle(() => {
       setCredentials({
         email: "",
       })
@@ -89,9 +89,9 @@ export const Welcome: React.FC<{}> = () => {
     <OnboardingWrapper>
       <div className="h-5/6 flex justify-center items-center">
         <div className="flex flex-col justify-center items-center lg:w-5/12 md:w-7/12 w-11/12 mx-auto gap-4 lg:gap-4">
-          <h1 className="lg:text-5xl text-4xl font-medium text-center text-primary50">
+          <H1 className="text-center font-medium text-primary50">
             Be the first to know when Onyinye Gift Cards launches!
-          </h1>
+          </H1>
 
           <div className="text-opacity-90 text-center text-primary50">
             Onyinye is still under construction - enter your details below to find out as soon as

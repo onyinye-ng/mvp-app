@@ -121,10 +121,10 @@ export const useStatusStore = create<StatusState & StatusMethods>()(
         message,
         color:
           color === "success"
-            ? "bg-success50050 text-success500"
+            ? "bg-success50 text-success500"
             : color === "danger"
             ? "bg-error50 text-error500"
-            : "bg-warning50 text-warning",
+            : "bg-warning50 text-warning500",
       }
 
       set({
@@ -156,13 +156,13 @@ export const useStatusStore = create<StatusState & StatusMethods>()(
         confirmProps: {
           color:
             color === "success"
-              ? "bg-success50050 text-success500"
+              ? "bg-success50 text-success500"
               : color === "danger"
               ? "bg-error50 text-error500"
-              : "bg-warning50 text-warning",
+              : "bg-warning50 text-warning500",
           colorAlt:
             color === "success"
-              ? "bg-success500 text-success50050"
+              ? "bg-success500 text-success50"
               : color === "danger"
               ? "bg-error500 text-error50"
               : "bg-warning500 text-warning50",
