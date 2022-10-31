@@ -19,7 +19,7 @@ const Header: React.FC<{}> = () => {
 
 const Footer: React.FC<{}> = () => {
   return (
-    <div className="text-center text-primary-light">
+    <div className="text-center text-primary50">
       &copy;&nbsp;Onyinye&nbsp;Technologies&nbsp;{new Date().getFullYear()}
     </div>
   )

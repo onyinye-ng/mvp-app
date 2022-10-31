@@ -88,7 +88,7 @@ export const useStatusStore = create<StatusState & StatusMethods>()(
     isLoading: false,
     loadingProps: {
       message: "Loading...",
-      borderColor: "border-primary-light",
+      borderColor: "border-primary50",
     },
     loading: (state, message = "Processing...", borderColor, bgColor) => {
       set({
@@ -121,10 +121,10 @@ export const useStatusStore = create<StatusState & StatusMethods>()(
         message,
         color:
           color === "success"
-            ? "bg-success-light text-success"
+            ? "bg-success50050 text-success500"
             : color === "danger"
-            ? "bg-danger-light text-danger"
-            : "bg-warning-light text-warning",
+            ? "bg-error50 text-error500"
+            : "bg-warning50 text-warning",
       }
 
       set({
@@ -156,16 +156,16 @@ export const useStatusStore = create<StatusState & StatusMethods>()(
         confirmProps: {
           color:
             color === "success"
-              ? "bg-success-light text-success"
+              ? "bg-success50050 text-success500"
               : color === "danger"
-              ? "bg-danger-light text-danger"
-              : "bg-warning-light text-warning",
+              ? "bg-error50 text-error500"
+              : "bg-warning50 text-warning",
           colorAlt:
             color === "success"
-              ? "bg-success text-success-light"
+              ? "bg-success500 text-success50050"
               : color === "danger"
-              ? "bg-danger text-danger-light"
-              : "bg-warning text-warning-light",
+              ? "bg-error500 text-error50"
+              : "bg-warning500 text-warning50",
           message,
           action,
           onConfirm: onConfirm === undefined ? async () => get().closeConfirm() : onConfirm,

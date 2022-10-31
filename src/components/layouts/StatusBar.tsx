@@ -29,7 +29,7 @@ export const StatusBar: React.FC<{}> = () => {
         <div
           className={`absolute w-fit ${loadingProps.bgColor} opacity-80 z-50 h-[5%] top-3 left-3 right-3 flex justify-between`}
         >
-          <div className="h-full w-fit p-3 flex items-center gap-2 text-primary-light">
+          <div className="h-full w-fit p-3 flex items-center gap-2 text-primary50">
             <LoadingIndicator borderColor={loadingProps.borderColor!} />
             <span>{loadingProps.message}</span>
           </div>

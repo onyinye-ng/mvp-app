@@ -20,7 +20,7 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
       className={`p-3 px-6 text-center rounded-md focus:outline-none focus:shadow-none hover:opacity-95 active:opacity-95 disabled:bg-opacity-95 ${props.className}`}
     >
       {props.type === "submit" && isLoading ? (
-        <LoadingIndicator borderColor="text-grey-light" />
+        <LoadingIndicator borderColor="text-neutral100" />
       ) : (
         props.children
       )}
@@ -43,7 +43,7 @@ export const TextButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>
       aria-label={props.title}
       {...props}
       disabled={(props.type === "submit" && isLoading) || props.disabled}
-      className={`p-0 focus:outline-none focus:shadow-none focus:underline active:underline disabled:bg-grey-light ${props.className}`}
+      className={`p-0 focus:outline-none focus:shadow-none focus:underline active:underline disabled:bg-neutral100 ${props.className}`}
     />
   )
 }
@@ -63,7 +63,7 @@ export const IconButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>
       aria-label={props.title}
       {...props}
       disabled={(props.type === "submit" && isLoading) || props.disabled}
-      className={`p-2 flex justify-center items-center rounded-full focus:outline-none focus:shadow-none hover:opacity-95 active:opacity-95 disabled:bg-grey-light ${props.className}`}
+      className={`p-2 flex justify-center items-center rounded-full focus:outline-none focus:shadow-none hover:opacity-95 active:opacity-95 disabled:bg-neutral100 ${props.className}`}
     />
   )
 }
