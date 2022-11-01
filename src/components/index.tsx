@@ -1,9 +1,14 @@
 export { OnboardingWrapper } from "./layouts/OnboardingWrapper"
 // export { DashboardWrapper } from "./layouts/DashboardWrapper"
-export { Button, IconButton, LinkButton, TextButton } from "./forms/FormButtons"
+// export { Button, IconButton, LinkButton, TextButton } from "./buttons/Button"
 export { IconLink, TextLink } from "./forms/Links"
 export { Input, PrefixInput, CheckboxInput, TextareaInput, Label } from "./forms/Inputs"
 export { Card } from "./custom/Card"
+
+// buttons
+export { Button } from "./buttons/Button"
+export { IconButton } from "./buttons/IconButton"
+export { OutlineButton } from "./buttons/OutlineButton"
 
 // typography
 export { Display1 } from "./typography/Display1"
