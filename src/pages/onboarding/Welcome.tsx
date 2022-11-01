@@ -71,10 +71,10 @@ const CustomForm: React.FC<props> = ({ status, message, onValidated }) => {
 
       <div className="flex flex-col">
         <Button
-          title="notify-me"
+          title="notify me"
           type="submit"
           disabled={!validateEmail()}
-          className="bg-primary text-primary50 mt-2"
+          className="mt-2"
         >
           Notify me!
         </Button>

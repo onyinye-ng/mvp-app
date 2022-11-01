@@ -30,7 +30,7 @@ export const useForm = create<FormState & FormMethods>()(
     },
     setError: (field, value) => {
       set({
-        credentials: { ...get().credentials, [field]: value },
+        errors: { ...get().errors, [field]: value },
       })
     },
     setErrors: (errors) => {
