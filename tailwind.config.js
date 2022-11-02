@@ -74,6 +74,7 @@ module.exports = {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
       serif: ["serif"],
+      brand: ["Quantify"],
     },
     extend: {
       translate: ["last"],
